@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<link rel="shortcut icon" href="/static/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="/static/style.css">
+{% block titulo %}
+{% endblock %}
+
+<script type="text/javascript" src="/static/scroll.js"></script>
+<body>
+
+{% set livro = loja.livro %}
+{% set menu = loja.produtos %}
+{% set usr = loja.usr.id %}
+{% set carrinho = loja.carrinho %}
+{% set unidades = loja.unidades %}
+{% set total = loja.total() %}
+
+{% set icons = ['fas fa-question', 'fas fa-archive', 'fas fa-microchip', 'fas fa-desktop'] %}
+<div class="navbar">
+    <a class="active" href="/" style="color: white;"><i class="fa fa-fw fa-home"></i> Home</a>
+    {% for nome in menu %}
+    <a href="/pr/{{ nome.title }}">{{ nome.title }}</a>
+    {% endfor %}
+    <a href="/carrinho"><i class="fas fa-shopping-cart"></i> Carrinho</a>
+    {% if usr %}
+    <a href="/logout"><i class="fa fa-fw fa-user"></i> Logout</a>
+    <user> {{ usr }}</user>
+    {% else %}
+    <a href="/login"><i class="fa fa-fw fa-lock"></i> Login</a>
+    <a href="/registo"><i class="fa fa-fw fa-user"></i> Registo</a>
+    {% endif %}
+</div>
+{% block conteudo %}
+{% endblock %}
+
+<br>
+<center>
+    <h3>&copy; Copyright 2019 Pedro Quinteiro</h3>
+</center>
+
+<footer class="footer">
+    <div class="icons">
+        <div class="email">
+            <i class="fas fa-envelope"></i>
+            <p> help@goat.com</p>
+        </div>
+
+        <div class="marker">
+            <i class="fas fa-map-marked-alt"></i>
+            <p>3960 Landmark St, Culver City, CA 90232</p>
+        </div>
+    </div>
+
+    <div class="info">
+        <p class="info-title">Sobre a Loja</p>
+        <p class="info-content">Este é um mini projeto dedicado à compra de produtos online. Feito no âmbito da disciplina de PSI</p>
+        <div>
+            <div>
+                <a href="https://www.instagram.com/goat/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div>
+                <a href="https://twitter.com/goatapp?lang=en" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+</body>
+</html>

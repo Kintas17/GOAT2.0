@@ -123,5 +123,5 @@ class Fatura:
         c.showPage()
         c.save()
         self.merge_pdf(file)
-        self.envia_pdf(file, loja.usr.email)
+        # self.envia_pdf(file, loja.usr.email)
         return file
